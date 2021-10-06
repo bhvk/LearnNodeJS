@@ -61,7 +61,7 @@ yargs.command({
     command: 'list',
     describe : 'Lists all notes from the app',
     handler(){
-        console.log(chalk.yellow.bold.inverse('Heres the list of notes'))
+        notes.listNotes()
     }
 })
 
