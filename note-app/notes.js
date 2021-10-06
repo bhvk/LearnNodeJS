@@ -64,17 +64,13 @@ const listNotes = () =>{
 
 const readNote = (title) => {
     const notes = loadNotes()
-    var flag = false
-    notes.forEach((element) =>{
-        if(element.title === title)
-        {
-            flag = true
-            console.log(chalk.yellow.bold.inverse(title))
-            console.log(element.body)
-        }
-    });
-    if(!flag){
+    const note = notes.find((element) => element.title === title)
+    if(!note){
         console.log(chalk.red.bold('Note with provided title DOES NOT exist'))
+    }
+    else{
+        console.log(chalk.yellow.bold.inverse(note.title))
+        console.log(note.body)
     }
 }
 
