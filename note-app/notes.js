@@ -18,9 +18,11 @@ const addNote = (title, body) => {
         log(chalk.blue.bold.inverse('Forming first of the notes'))
     }
 
-    const duplicateNotes = notes.filter((note) => note.title === title)
+    // const duplicateNotes = notes.filter((note) => note.title === title)
+    const duplicateNote = notes.find((note) => note.title === title)
 
-    if(duplicateNotes.length === 0 ){
+    // if(duplicateNotes.length === 0 ){
+    if(duplicateNote === undefined ){ //or if(!duplicateNote)
         notes.push({
             title: title,
             body: body
