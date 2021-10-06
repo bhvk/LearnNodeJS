@@ -1,5 +1,6 @@
 const fs = require('fs')
 const chalk = require('chalk')
+const { title } = require('process')
 const log = console.log
 
 const getNotes = () => {
@@ -54,13 +55,28 @@ const removeNote = (title) => {
     }
 }
 
-
 const listNotes = () =>{
     console.log(chalk.yellow.bold.inverse('Your notes'))
     const notes = loadNotes()
     notes.forEach(element => {
         console.log(element.title)
     });
+}
+
+const readNote = (title) => {
+    const notes = loadNotes()
+    var flag = false
+    notes.forEach((element) =>{
+        if(element.title === title)
+        {
+            flag = true
+            console.log(chalk.yellow.bold.inverse(title))
+            console.log(element.body)
+        }
+    });
+    if(!flag){
+        console.log(chalk.red.bold('Note with provided title DOES NOT exist'))
+    }
 }
 
 const saveNotes = (notes) => {
@@ -83,5 +99,6 @@ module.exports = {
     getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote
 };

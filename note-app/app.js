@@ -52,8 +52,16 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe : 'Reads a note from the app',
-    handler(){
-        console.log(chalk.blue.bold.inverse('Read the note'))
+    builder: {
+        title: {
+            describe: 'title of note to be read',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv){
+        console.log(chalk.blue.bold.inverse('Read the note with title = '+ argv.title))
+        notes.readNote(argv.title)
     }
 })
 
