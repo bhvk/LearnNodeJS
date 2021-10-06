@@ -1,13 +1,9 @@
 const chalk = require('chalk');
 const yargs = require('yargs');
 const log = console.log;
-const notes = require('./notes.js')  //getNotes
+const notes = require('./notes.js') 
 
-
-// const msg = getNotes();
-// console.log(msg);
-
-//TODO: add, remove, read, list
+//App functionality: add, remove, read, list
 
 yargs.command({
     command: 'add',

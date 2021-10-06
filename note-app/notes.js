@@ -2,12 +2,6 @@ const fs = require('fs')
 const chalk = require('chalk')
 const log = console.log
 
-const getNotes = () => {
-    const dataBuffer = fs.readFileSync('notes.txt')
-    const data = JSON.parse(dataBuffer.toString())
-    return data
-}
-
 const addNote = (title, body) => {
 
     const notes = loadNotes()
@@ -91,7 +85,6 @@ const loadNotes = () => {
 }
 
 module.exports = {
-    getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
     listNotes: listNotes,
