@@ -32,9 +32,9 @@ request({url: url, json: true}, (error, response)=>{
 //    - Success, pass forecast string for data (same format as from before)
 
 const forecast = (latitude,longitude, callback) => {
-    console.log('Longitude = ',longitude)
-    console.log('Latitude = ',latitude)
-    const forecasturl = 'http://api.weatherstack.com/current?access_key=8869458679db594bceb778d309b4d83e&query=' + latitude + ','+ longitude + '&units=f'
+    // console.log('Longitude = ',longitude)
+    // console.log('Latitude = ',latitude)
+    const forecasturl = 'http://api.weatherstack.com/current?access_key=8869458679db594bceb778d309b4d83e&query=' + latitude + ','+ longitude + '&units=m'
     request({url: forecasturl, json: true}, (error, response) => {
         if(error){
             callback('Unable to connect to weather service', undefined)
