@@ -1,7 +1,5 @@
 const request = require('postman-request');
-const geocode = require('./utils/geocode');
-const forecast = require('./utils/forecast')
-const { features } = require('process');
+
 
 /*
 const url = 'http://api.weatherstack.com/current?access_key=8869458679db594bceb778d309b4d83e&query=31.1234,-100.1212&units=f'
@@ -23,22 +21,6 @@ request({url: url, json: true}, (error, response)=>{
 })
 */
 
-/*
-geocode('Chandigarh', (error, data) => {
-    console.log('Error : ', error)
-    console.log('Data  : ', data)
-})
-
-geocode('Punjab', (error, data) => {
-    console.log('Error : ', error)
-    console.log('Data  : ', data)
-})
-
-geocode('Pubjab,India', (error, data) => {
-    console.log('Error : ', error)
-    console.log('Data  : ', data)
-})
-*/
 //
 // Goal: Create a reusable function for getting the forecast
 //
@@ -49,7 +31,23 @@ geocode('Pubjab,India', (error, data) => {
 //    - Coordinate error, pass string for error
 //    - Success, pass forecast string for data (same format as from before)
 
-forecast(31.1234,-100.1212, (error, data) => {
-    console.log('Error', error)
-    console.log('Data', data)
-  })
+const forecast = (latitude,longitude, callback) => {
+    console.log('Longitude = ',longitude)
+    console.log('Latitude = ',latitude)
+    const forecasturl = 'http://api.weatherstack.com/current?access_key=8869458679db594bceb778d309b4d83e&query=' + latitude + ','+ longitude + '&units=f'
+    request({url: forecasturl, json: true}, (error, response) => {
+        if(error){
+            callback('Unable to connect to weather service', undefined)
+        }else if(response.body.error){
+            callback('Unable to find that location', undefined)
+        }else{
+            // callback(undefined, 'It is currently '+response.body.current.temperature+' degrees Fahrenheit out there and there are '+
+            //          response.body.current.precip+'\% chances of rain. Condition is : '+response.body.current.weather_descriptions[0])
+            callback(undefined, {temperature: response.body.current.temperature,
+                                 rain: response.body.current.precip,
+                                 condition: response.body.current.weather_descriptions[0]})
+        }
+    })
+}
+
+module.exports = forecast
