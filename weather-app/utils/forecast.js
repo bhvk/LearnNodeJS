@@ -35,17 +35,17 @@ const forecast = (latitude,longitude, callback) => {
     // console.log('Longitude = ',longitude)
     // console.log('Latitude = ',latitude)
     const forecasturl = 'http://api.weatherstack.com/current?access_key=8869458679db594bceb778d309b4d83e&query=' + latitude + ','+ longitude + '&units=m'
-    request({url: forecasturl, json: true}, (error, response) => {
+    request({url: forecasturl, json: true}, (error, {body}) => {
         if(error){
             callback('Unable to connect to weather service', undefined)
-        }else if(response.body.error){
+        }else if(body.error){
             callback('Unable to find that location', undefined)
         }else{
-            // callback(undefined, 'It is currently '+response.body.current.temperature+' degrees Fahrenheit out there and there are '+
+            // callback(undefined, 'It is currently '+ body.current.temperature+' degrees Fahrenheit out there and there are '+
             //          response.body.current.precip+'\% chances of rain. Condition is : '+response.body.current.weather_descriptions[0])
-            callback(undefined, {temperature: response.body.current.temperature,
-                                 rain: response.body.current.precip,
-                                 condition: response.body.current.weather_descriptions[0]})
+            callback(undefined, {temperature: body.current.temperature,
+                                 rain: body.current.precip,
+                                 condition: body.current.weather_descriptions[0]})
         }
     })
 }
