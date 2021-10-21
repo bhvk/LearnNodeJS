@@ -3,9 +3,25 @@ h1 {
     color: greenyellow;
 }
 
+h2 {
+    text-align: center;
+    color: blueviolet;
+}
+
+p {
+    text-align: center;
+    color: grey;
+}
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 20%;
+  }
+
+  footer {
+    text-align: center;
+    padding: 3px;
+    background-color: lightsteelblue;
+    color: white;
   }

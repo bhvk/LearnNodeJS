@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
+    <title>{{title}}</title>
     <link rel="stylesheet" href="./css/styles.css">
-    <script src="./js/app.js"></script>
 </head>
 <body>
-    <h1>Weather Channel</h1>
+    {{>header}}
+    
+    <h1>Meet {{name}}</h1>
+    <img src="./img/profile-pic.png" alt="bhavuk.png" class="center">
+    <p>Created with ❤️ </p>
+
+    {{>footer}}
 </body>
 </html>
