@@ -6,13 +6,13 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="icon" href="./img/weather-icon.png">
+    <script src="./js/app.js"></script>
 </head>
 <body>
     <div class="main-content">
         {{>header}}
-        {{!-- <h1>Meet {{name}}</h1> --}}
-        <img src="./img/profile-pic.png" alt="bhavuk.png" class="portrait center">
-        {{!-- <p>Created with ❤️ </p> --}}
+
+        <h2>{{errorMsg}}</h2>
     </div>
     {{>footer}}
 </body>
