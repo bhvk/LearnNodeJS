@@ -1,6 +1,9 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+const { query } = require('express')
+const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
 
 // console.log(__dirname)
 // console.log(__filename)
@@ -45,10 +48,40 @@ app.get('/help', (req, res) =>{
 })
 
 app.get('/weather', (req, res) => {
-    res.send({
-        location: 'Chandigarh',
-        forecast: 27
+
+    const area = req.query.address
+    if(!area){
+        return res.send({
+            error: 'Insert an address query param'
+        })
+    }
+
+    geocode(area, (error, {latitude, longitude, location} = {}) => {
+        if(error){
+            return res.send({error})//shorthand for error: error
+        }
+
+        forecast(latitude, longitude, (error, forecastData) => {
+            if(error){
+                return res.send({ error }) //shorthand for error: error
+            }
+            // res.send({
+            //     forecastData
+            // })
+            res.send({
+                address: req.query.address,
+                location: location,
+                forecast: forecastData,
+                // condition: forecastData.condition,
+                // rain: forecastData.rain
+            })
+        })
+
     })
+    // const weather = forecast(coord.latitude, coord.longitude)
+    // console.log(weather)
+
+    
 })
     
 app.get('/help/*', (req, res) => {
