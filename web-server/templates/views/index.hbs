@@ -6,14 +6,23 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="icon" href="./img/weather-icon.png">
-    <script src="./js/app.js"></script>
+    
 </head>
 <body>
     <div class="main-content">
         {{>header}}
-        <p> Use to get weather </p>
+        {{!-- <p> Use to get weather </p> --}}
+        <form>
+            {{!-- <input type="search" name="search" placeholder="Enter location name" pattern=".*\S.*" required> --}}
+            <input placeholder="Enter location name">
+            <button >Search </button>
+        </form>
     </div>
 
     {{>footer}}
+    {{!-- Important to move this at end otherwise we get -->Uncaught TypeError: Cannot read properties of null (reading 'addEventListener') 
+        i.e because script gets loaded before the remaining content and since form is not yet available we get this null error
+    --}}
+    <script src="./js/app.js"></script>  
 </body>
 </html>
