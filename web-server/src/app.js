@@ -43,7 +43,7 @@ app.get('/help', (req, res) =>{
     res.render('help', {
         title: 'Help',
         name: 'Bhavuk',
-        helpText: 'We are in a bit of a fix 😬 , HELP US! 🙏 ',
+        helpText: 'To find weather of any location input zipcode/address/initials of the area',
     })
 })
 

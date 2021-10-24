@@ -6,17 +6,27 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="icon" href="./img/weather-icon.png">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="main-content">
         {{>header}}
+
         {{!-- <p> Use to get weather </p> --}}
-        <form>
-            {{!-- <input type="search" name="search" placeholder="Enter location name" pattern=".*\S.*" required> --}}
-            <input placeholder="Enter location name">
-            <button >Search </button>
-        </form>
+        <div class="wrap"></div>
+            <form>
+            {{!-- <input placeholder="Enter location name">
+            <button >Search </button> --}}
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Enter location name">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </form>
+            <p id="message-1"></p>
+            <p id="message-2"></p>
+        </div>
     </div>
 
     {{>footer}}
