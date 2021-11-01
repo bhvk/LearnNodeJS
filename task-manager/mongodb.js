@@ -76,7 +76,9 @@ db.collection('tasks').insertMany([
     // query to find users aged more than 50
     // const query = { age: { $gt: 50 } };
     const query = { _id: new ObjectId("61798541d3a0ed3eb5804b52")};
-/*READ*/    
+
+/*READ*/
+/*
     users.findOne(query, (error, ans)=>{
         if(error){
             return console.log("Query ERRORWS!")      
@@ -86,10 +88,39 @@ db.collection('tasks').insertMany([
         }
         console.log(ans)
     })
-    // users.find(query).toArray((error, ans) => {
-    //     if(error){
-    //         return console.log("find errored!")
-    //     }
-    //     console.log(ans)
-    // })
+*/
+/*
+    users.find(query).toArray((error, ans) => {
+        if(error){
+            return console.log("find errored!")
+        }
+        console.log(ans)
+    })
+*/
+
+/*UPDATE*/
+/*
+users.updateOne(query, {
+    $set:{
+        name: "ANAYA"
+    },
+    $inc:{
+        age: 1
+    }
+}).then((result) => {
+    console.log(result)
+}).catch((error) =>{
+    console.log(error)
+})
+*/
+users.updateMany({age: {$gt: 27}}, {
+    $set: {
+        age: 50
+    }
+}).then((result) => {
+    console.log(result)
+}).catch((error) =>{
+    console.log("ERROR in updating many!")
+})
+
 })
