@@ -74,7 +74,8 @@ db.collection('tasks').insertMany([
     const users = db.collection("users")
 
     // query to find users aged more than 50
-    const query = { age: { $gt: 50 } };
+    // const query = { age: { $gt: 50 } };
+    const query = { _id: new ObjectId("61798541d3a0ed3eb5804b52")};
 /*READ*/    
     users.findOne(query, (error, ans)=>{
         if(error){
