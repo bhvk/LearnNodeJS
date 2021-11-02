@@ -113,6 +113,7 @@ users.updateOne(query, {
     console.log(error)
 })
 */
+/*
 users.updateMany({age: {$gt: 27}}, {
     $set: {
         age: 50
@@ -121,6 +122,14 @@ users.updateMany({age: {$gt: 27}}, {
     console.log(result)
 }).catch((error) =>{
     console.log("ERROR in updating many!")
+})
+*/
+
+/*DELETE*/
+users.deleteMany({age: 50}).then((result) => {
+    console.log(result)
+}).catch((error) => {
+    console.log(error)
 })
 
 })
