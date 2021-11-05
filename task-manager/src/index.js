@@ -24,7 +24,7 @@ app.post('/users', (req, res) => {
 
     user.save().then( ()=> {
         // console.log("SAVING TO USERS model")
-        res.send(user)
+        res.status(201).send(user)
     }).catch( (er)=>{
         // console.log("COULD NOT SAVE TO USERS model" + er)
         res.status(400).send(er)
@@ -37,7 +37,7 @@ app.post('/tasks', (req, res) => {
     console.log(task)
     
     task.save().then( ()=>{
-        res.send(task)
+        res.status(201).send(task)
     }).catch((e) => {
         res.status(400).send(e)
     })
